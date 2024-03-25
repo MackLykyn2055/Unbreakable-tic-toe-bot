@@ -160,9 +160,9 @@ def calc(li, to, prev, oppo):
         elif li[1][1] is False:
             if li[0][0] is True:
                 if li[1][2]:
-                    return [2, 0]
-                elif li[2][1]:
                     return [0, 2]
+                elif li[2][1]:
+                    return [2, 0]
                 elif li[0][2]:
                     return [0, 1]
                 elif li[0][1]:
@@ -173,9 +173,9 @@ def calc(li, to, prev, oppo):
                     return [2, 0]
             elif li[0][2]:
                 if li[1][0]:
-                    return [2, 2]
-                elif li[2][1]:
                     return [0, 0]
+                elif li[2][1]:
+                    return [2, 2]
                 elif li[0][0]:
                     return [0, 1]
                 elif li[0][1]:
@@ -186,9 +186,9 @@ def calc(li, to, prev, oppo):
                     return [2, 2]
             elif li[2][0]:
                 if li[0][1]:
-                    return [2, 2]
-                elif li[1][2]:
                     return [0, 0]
+                elif li[1][2]:
+                    return [2, 2]
                 elif li[0][0]:
                     return [1, 0]
                 elif li[1][0]:
@@ -199,9 +199,9 @@ def calc(li, to, prev, oppo):
                     return [2, 2]
             elif li[2][2]:
                 if li[0][1]:
-                    return [2, 0]
-                elif li[1][0]:
                     return [0, 2]
+                elif li[1][0]:
+                    return [2, 0]
                 elif li[0][2]:
                     return [1, 2]
                 elif li[1][2]:
@@ -295,7 +295,15 @@ def calc(li, to, prev, oppo):
                 return choice([[2, 2], [0, 2]])
             else:
                 return choice([[2, 2], [2, 0]])
-        return get_all(li)
+        else:
+            if li[0][1] is None:
+                return [0, 1]
+            elif li[1][2] is None:
+                return [1, 2]
+            elif li[1][0] is None:
+                return [1, 0]
+            else:
+                return [2, 1]
     elif to == 6:
         x = get_all(li)
         if x is not None:
@@ -350,6 +358,6 @@ def calc(li, to, prev, oppo):
         if x is not None:
             return x
         else:
-            return get_all(li)
+            return get_missing(li)
     else:
         return get_all(li)
